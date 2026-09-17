@@ -1,6 +1,12 @@
 import { useState } from 'react'
 
-type Page = 'home' | 'projects' | 'about' | 'resume' | 'contact' | 'changeflow'
+type Page =
+  | 'home'
+  | 'projects'
+  | 'about'
+  | 'resume'
+  | 'contact'
+  | 'changeflow'
 
 interface NavProps {
   current: Page
@@ -25,25 +31,30 @@ export default function Nav({ current, onNav }: NavProps) {
   }
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-sm">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+        {/* Brand */}
         <button
           onClick={() => handleNav('home')}
-          className="text-slate-900 font-semibold text-lg tracking-tight hover:text-blue-600 transition-colors"
+          className="flex items-center gap-2 tracking-tight transition-colors hover:text-blue-600"
+          aria-label="Go to home page"
         >
-          <span className="text-blue-600">JS</span> · Portfolio
+          <span className="text-lg font-bold text-blue-600">GN</span>
+          <span className="text-lg font-semibold text-slate-900">
+            Gia Hung Nguyen
+          </span>
         </button>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
+        {/* Desktop navigation */}
+        <nav className="hidden items-center gap-1 md:flex">
           {links.map(({ label, page }) => (
             <button
               key={page}
               onClick={() => handleNav(page)}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+              className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
                 current === page
-                  ? 'text-blue-600 bg-blue-50'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  ? 'bg-blue-50 text-blue-600'
+                  : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
               }`}
             >
               {label}
@@ -51,10 +62,11 @@ export default function Nav({ current, onNav }: NavProps) {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
+        {/* Desktop CTA */}
+        <div className="hidden items-center md:flex">
           <button
             onClick={() => handleNav('contact')}
-            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors"
+            className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
           >
             Contact Me
           </button>
@@ -62,41 +74,63 @@ export default function Nav({ current, onNav }: NavProps) {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+          className="rounded-md p-2 text-slate-600 hover:bg-slate-100 hover:text-slate-900 md:hidden"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label="Toggle navigation menu"
+          aria-expanded={menuOpen}
         >
           {menuOpen ? (
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           ) : (
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
           )}
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile navigation */}
       {menuOpen && (
-        <div className="md:hidden border-t border-slate-200 bg-white px-6 py-3 flex flex-col gap-1">
+        <div className="flex flex-col gap-1 border-t border-slate-200 bg-white px-6 py-3 md:hidden">
           {links.map(({ label, page }) => (
             <button
               key={page}
               onClick={() => handleNav(page)}
-              className={`text-left px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+              className={`rounded-md px-3 py-2 text-left text-sm font-medium transition-colors ${
                 current === page
-                  ? 'text-blue-600 bg-blue-50'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  ? 'bg-blue-50 text-blue-600'
+                  : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
               }`}
             >
               {label}
             </button>
           ))}
+
           <button
             onClick={() => handleNav('contact')}
-            className="mt-2 px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors text-left"
+            className="mt-2 rounded-md bg-blue-600 px-3 py-2 text-left text-sm font-medium text-white transition-colors hover:bg-blue-700"
           >
             Contact Me
           </button>
