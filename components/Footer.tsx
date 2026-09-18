@@ -1,27 +1,41 @@
-type Page = 'home' | 'projects' | 'about' | 'resume' | 'contact' | 'changeflow'
+import { Link } from 'react-router-dom'
 
-export default function Footer({ onNav }: { onNav: (page: Page) => void }) {
-  const links: { label: string; page: Page }[] = [
-    { label: 'Home', page: 'home' },
-    { label: 'Projects', page: 'projects' },
-    { label: 'About', page: 'about' },
-    { label: 'Resume', page: 'resume' },
-    { label: 'Contact', page: 'contact' },
-  ]
+const links = [
+  { label: 'Home', to: '/' },
+  { label: 'Projects', to: '/projects' },
+  { label: 'About', to: '/about' },
+  { label: 'Resume', to: '/resume' },
+  { label: 'Contact', to: '/contact' },
+]
+
+export default function Footer() {
+  const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-slate-200 bg-white mt-10">
-      <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-sm text-slate-400">© 2025 · Business Systems Analyst Portfolio</p>
-        <nav className="flex flex-wrap gap-1">
-          {links.map(({ label, page }) => (
-            <button
-              key={page}
-              onClick={() => { onNav(page); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
-              className="px-3 py-1 text-xs text-slate-400 hover:text-slate-700 transition-colors"
+    <footer className="mt-10 border-t border-slate-200 bg-white">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 sm:flex-row">
+        <div className="text-center sm:text-left">
+          <p className="text-sm font-medium text-slate-600">
+            Gia Hung Nguyen
+          </p>
+
+          <p className="mt-1 text-xs text-slate-400">
+            © {year} · Business Systems Analyst Portfolio
+          </p>
+        </div>
+
+        <nav
+          className="flex flex-wrap justify-center gap-1"
+          aria-label="Footer navigation"
+        >
+          {links.map(({ label, to }) => (
+            <Link
+              key={to}
+              to={to}
+              className="rounded-md px-3 py-1.5 text-xs text-slate-400 transition-colors hover:bg-slate-50 hover:text-slate-700"
             >
               {label}
-            </button>
+            </Link>
           ))}
         </nav>
       </div>

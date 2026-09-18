@@ -1,142 +1,168 @@
-type Page = 'home' | 'projects' | 'about' | 'resume' | 'contact' | 'changeflow'
+import { Link } from 'react-router-dom'
 
-interface ProjectsProps {
-  onNav: (page: Page) => void
-}
+const changeFlowTags = [
+  'Business Analysis',
+  'Process Improvement',
+  'Requirements Engineering',
+  'BPMN & UML',
+  'Spring Boot',
+  'React',
+  'PostgreSQL',
+]
 
-const tags = ['Business Analysis', 'Process Improvement', 'Requirements Engineering', 'System Design', 'Spring Boot', 'React', 'PostgreSQL']
+const changeFlowMetrics = [
+  { value: '32', label: 'Functional Requirements' },
+  { value: '15', label: 'Business Rules' },
+  { value: '13', label: 'User Stories' },
+  { value: '37 / 37', label: 'UAT Cases Passed' },
+]
 
-export default function Projects({ onNav }: ProjectsProps) {
+export default function Projects() {
   return (
-    <section className="max-w-6xl mx-auto px-6 py-20">
+    <section className="mx-auto max-w-6xl px-6 py-20">
+      {/* Section heading */}
       <div className="mb-12">
-        <p className="text-blue-600 text-sm font-semibold tracking-widest uppercase mb-2">Featured Work</p>
-        <h2 className="text-3xl font-bold text-slate-900">Projects</h2>
-        <p className="text-slate-500 mt-2 max-w-xl">
-          End-to-end case studies combining business analysis, system design, and technical delivery.
+        <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-blue-600">
+          Featured Work
+        </p>
+
+        <h2 className="text-3xl font-bold text-slate-900">
+          Projects
+        </h2>
+
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-500">
+          Case studies showing how I move from business problem analysis and
+          requirements through system design, implementation, traceability,
+          and validation.
         </p>
       </div>
 
       <div className="flex flex-col gap-8">
-        {/* ChangeFlow — primary project card */}
-        <div className="bg-white rounded-xl border border-slate-200 overflow-hidden hover:shadow-lg hover:border-slate-300 transition-all group">
-          {/* Mock app preview banner */}
-          <div className="bg-gradient-to-br from-slate-800 to-slate-900 px-8 pt-8 pb-0 flex items-end gap-4 min-h-[160px] relative overflow-hidden">
-            {/* Simulated app UI */}
-            <div className="absolute inset-0 opacity-10">
-              {[...Array(8)].map((_, i) => (
-                <div key={i} className="absolute h-px bg-white" style={{ top: `${i * 22 + 20}px`, left: 0, right: 0 }} />
-              ))}
-            </div>
-            <div className="relative flex gap-3 w-full">
-              {/* Sidebar mock */}
-              <div className="w-36 bg-slate-700/60 rounded-t-lg flex-shrink-0 p-3">
-                <div className="w-16 h-2 bg-blue-400 rounded mb-3" />
-                {['My Requests', 'Review Queue', 'All Requests', 'Settings'].map((item) => (
-                  <div key={item} className="h-6 flex items-center gap-2 mb-1">
-                    <div className="w-3 h-3 bg-slate-500 rounded" />
-                    <div className="text-[10px] text-slate-400">{item}</div>
-                  </div>
-                ))}
-              </div>
-              {/* Main content mock */}
-              <div className="flex-1 bg-slate-700/40 rounded-t-lg p-3">
-                <div className="w-40 h-2 bg-white/20 rounded mb-4" />
-                <div className="grid grid-cols-3 gap-2 mb-3">
-                  {[
-                    { label: 'Open', val: '4', color: 'bg-blue-500' },
-                    { label: 'In Review', val: '2', color: 'bg-amber-500' },
-                    { label: 'Closed', val: '11', color: 'bg-emerald-500' },
-                  ].map((s) => (
-                    <div key={s.label} className="bg-slate-600/50 rounded p-2">
-                      <div className={`text-sm font-bold text-white`}>{s.val}</div>
-                      <div className="text-[9px] text-slate-400">{s.label}</div>
-                    </div>
-                  ))}
-                </div>
-                <div className="space-y-1.5">
-                  {['CR-001 · System Integration · In Review', 'CR-002 · Database Migration · Open', 'CR-003 · UI Update · Approved'].map((row) => (
-                    <div key={row} className="h-6 bg-slate-600/40 rounded flex items-center px-2 text-[9px] text-slate-400">{row}</div>
-                  ))}
-                </div>
-              </div>
+        {/* ChangeFlow */}
+        <article className="group overflow-hidden rounded-xl border border-slate-200 bg-white transition-all hover:border-slate-300 hover:shadow-lg">
+          {/* Real ChangeFlow preview */}
+          <div className="relative h-[260px] overflow-hidden bg-slate-900 sm:h-[320px]">
+            <img
+              src="/screenshots/dashboard.png"
+              alt="ChangeFlow role-aware dashboard"
+              className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.015]"
+            />
+
+            {/* subtle bottom fade */}
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-slate-900/30 to-transparent" />
+
+            <div className="absolute bottom-4 left-4 rounded-md border border-white/20 bg-slate-900/70 px-3 py-1.5 text-xs font-medium text-white backdrop-blur">
+              ChangeFlow v1.0
             </div>
           </div>
 
           <div className="p-8">
-            <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="px-2 py-0.5 text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full">
-                    MVP Complete
-                  </span>
-                  <span className="px-2 py-0.5 text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200 rounded-full">
-                    Full Case Study Available
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mt-2">
-                  ChangeFlow — Change Request Management System
-                </h3>
-                <p className="text-slate-500 mt-1 max-w-2xl text-sm leading-relaxed">
-                  An end-to-end Business Systems Analysis and full-stack project designed to centralize and standardize
-                  the internal change request lifecycle. Covers requirements through UAT.
-                </p>
+            <div className="mb-5">
+              <div className="mb-3 flex flex-wrap items-center gap-2">
+                <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700">
+                  Functional MVP Complete
+                </span>
+
+                <span className="rounded-full border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-700">
+                  UAT Accepted
+                </span>
               </div>
+
+              <h3 className="text-xl font-bold text-slate-900">
+                ChangeFlow — Change Request Management System
+              </h3>
+
+              <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-500">
+                An end-to-end Business Systems Analysis and full-stack project
+                designed to centralize and standardize an internal change
+                request lifecycle from intake and review through developer
+                assignment, implementation, validation, and closure.
+              </p>
             </div>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              {tags.map((tag) => (
-                <span key={tag} className="px-2.5 py-1 text-xs font-medium bg-slate-100 text-slate-600 rounded-md">
+            <div className="mb-6 flex flex-wrap gap-2">
+              {changeFlowTags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600"
+                >
                   {tag}
                 </span>
               ))}
             </div>
 
-            {/* Metrics row */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-slate-50 rounded-lg mb-6 border border-slate-200">
-              {[
-                { value: '32', label: 'Functional Requirements' },
-                { value: '15', label: 'Business Rules' },
-                { value: '13', label: 'User Stories' },
-                { value: '37 / 37', label: 'UAT Cases Passed' },
-              ].map((m) => (
-                <div key={m.label} className="text-center">
-                  <div className="text-xl font-bold text-blue-600">{m.value}</div>
-                  <div className="text-xs text-slate-500 mt-0.5">{m.label}</div>
+            {/* Metrics */}
+            <div className="mb-6 grid grid-cols-2 gap-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:grid-cols-4">
+              {changeFlowMetrics.map((metric) => (
+                <div
+                  key={metric.label}
+                  className="text-center"
+                >
+                  <div className="text-xl font-bold text-blue-600">
+                    {metric.value}
+                  </div>
+
+                  <div className="mt-0.5 text-xs text-slate-500">
+                    {metric.label}
+                  </div>
                 </div>
               ))}
             </div>
 
-            <button
-              onClick={() => onNav('changeflow')}
-              className="px-5 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-md hover:bg-blue-700 transition-all hover:shadow-md active:scale-[0.98]"
+            <Link
+              to="/projects/changeflow"
+              className="inline-flex items-center rounded-md bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-blue-700 hover:shadow-md active:scale-[0.98]"
             >
               View Case Study →
-            </button>
+            </Link>
           </div>
-        </div>
+        </article>
 
-        {/* Banking — placeholder card */}
-        <div className="bg-white rounded-xl border border-dashed border-slate-300 p-8 hover:border-slate-400 transition-all">
-          <div className="flex items-center justify-between flex-wrap gap-4">
+        {/* Banking project */}
+        <article className="rounded-xl border border-dashed border-slate-300 bg-white p-8 transition-all hover:border-slate-400">
+          <div className="flex flex-wrap items-center justify-between gap-6">
             <div>
-              <span className="px-2 py-0.5 text-xs font-medium bg-amber-50 text-amber-700 border border-amber-200 rounded-full">
-                Case Study In Development
+              <span className="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-700">
+                Upcoming Project
               </span>
-              <h3 className="text-xl font-bold text-slate-900 mt-3">Banking Systems Project</h3>
-              <p className="text-slate-400 text-sm mt-1">Business Analysis · Systems Integration · Financial Services</p>
-              <p className="text-slate-500 text-sm mt-3 max-w-xl">
-                Analysis and integration work within a financial services context. Case study documentation in progress.
+
+              <h3 className="mt-3 text-xl font-bold text-slate-900">
+                Banking Systems Case Study
+              </h3>
+
+              <p className="mt-1 text-sm text-slate-400">
+                Business Analysis · Systems Integration · Financial Services
+              </p>
+
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-500">
+                A future case study focused on analyzing a realistic banking
+                problem and designing a manageable solution involving multiple
+                business and technical systems.
+              </p>
+
+              <p className="mt-3 text-xs font-medium text-slate-400">
+                Research and problem selection will begin next.
               </p>
             </div>
-            <div className="flex-shrink-0 w-16 h-16 bg-slate-100 rounded-xl flex items-center justify-center text-slate-400">
-              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+
+            <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-400">
+              <svg
+                className="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
+                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                />
               </svg>
             </div>
           </div>
-        </div>
+        </article>
       </div>
     </section>
   )

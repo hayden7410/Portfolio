@@ -1,4 +1,11 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useLocation,
+} from 'react-router-dom'
+
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Skills from './components/Skills'
@@ -9,58 +16,110 @@ import Resume from './components/Resume'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
-type Page = 'home' | 'projects' | 'about' | 'resume' | 'contact' | 'changeflow'
+function HomePage() {
+  return (
+    <>
+      <Hero />
 
-export default function App() {
-  const [page, setPage] = useState<Page>('home')
+      <Skills />
 
-  const handleNav = (next: Page) => {
-    setPage(next)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+      <Projects />
 
+      <Contact />
+    </>
+  )
+}
+
+function ProjectsPage() {
+  return (
+    <>
+      <div className="mx-auto max-w-6xl px-6 pb-4 pt-12">
+        <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-blue-600">
+          Portfolio
+        </p>
+
+        <h1 className="text-3xl font-bold text-slate-900">
+          Projects
+        </h1>
+
+        <p className="mt-2 text-slate-500">
+          End-to-end case studies from requirements to delivery.
+        </p>
+      </div>
+
+      <Projects />
+    </>
+  )
+}
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'auto',
+    })
+  }, [pathname])
+
+  return null
+}
+
+function PortfolioApp() {
   return (
     <div className="min-h-screen bg-[#f0f4f8]">
-      <Nav current={page} onNav={handleNav} />
+      <ScrollToTop />
+
+      <Nav />
 
       <main>
-        {page === 'home' && (
-          <>
-            <Hero onNav={handleNav} />
-            <Skills />
-            <section className="max-w-6xl mx-auto px-6 py-4">
-              <div className="flex items-center justify-between mb-0">
-                <div />
-              </div>
-            </section>
-            <Projects onNav={handleNav} />
-            <Contact />
-          </>
-        )}
+        <Routes>
+          <Route
+            path="/"
+            element={<HomePage />}
+          />
 
-        {page === 'projects' && (
-          <>
-            <div className="max-w-6xl mx-auto px-6 pt-12 pb-4">
-              <p className="text-blue-600 text-sm font-semibold tracking-widest uppercase mb-2">Portfolio</p>
-              <h1 className="text-3xl font-bold text-slate-900">Projects</h1>
-              <p className="text-slate-500 mt-2">End-to-end case studies from requirements to delivery.</p>
-            </div>
-            <Projects onNav={handleNav} />
-          </>
-        )}
+          <Route
+            path="/projects"
+            element={<ProjectsPage />}
+          />
 
-        {page === 'changeflow' && (
-          <CaseStudy />
-        )}
+          <Route
+            path="/projects/changeflow"
+            element={<CaseStudy />}
+          />
 
-        {page === 'about' && <About />}
+          <Route
+            path="/about"
+            element={<About />}
+          />
 
-        {page === 'resume' && <Resume />}
+          <Route
+            path="/resume"
+            element={<Resume />}
+          />
 
-        {page === 'contact' && <Contact />}
+          <Route
+            path="/contact"
+            element={<Contact />}
+          />
+
+          <Route
+            path="*"
+            element={<HomePage />}
+          />
+        </Routes>
       </main>
 
-      <Footer onNav={handleNav} />
+      <Footer />
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <PortfolioApp />
+    </BrowserRouter>
   )
 }

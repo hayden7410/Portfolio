@@ -2,69 +2,156 @@ const categories = [
   {
     title: 'Business Analysis',
     icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      <svg
+        className="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+        />
       </svg>
     ),
-    color: 'text-blue-600 bg-blue-50',
-    skills: ['Requirements Elicitation', 'BRD / Functional Requirements', 'User Stories & Acceptance Criteria', 'Stakeholder Analysis', 'Requirements Traceability'],
+    color: 'bg-blue-50 text-blue-600',
+    skills: [
+      'Requirements Elicitation',
+      'Business & Functional Requirements',
+      'User Stories & Acceptance Criteria',
+      'Stakeholder Analysis',
+      'Business Rules',
+      'Requirements Traceability',
+    ],
   },
   {
     title: 'Process & Systems Analysis',
     icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+      <svg
+        className="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"
+        />
       </svg>
     ),
-    color: 'text-indigo-600 bg-indigo-50',
-    skills: ['BPMN', 'Current-State / Future-State Analysis', 'UML', 'Sequence Diagrams', 'Root Cause Analysis', 'Solution Evaluation'],
+    color: 'bg-indigo-50 text-indigo-600',
+    skills: [
+      'BPMN & Process Mapping',
+      'Current-State / Future-State Analysis',
+      'UML Modelling',
+      'Sequence Diagrams',
+      'Root Cause Analysis',
+      'Solution Evaluation',
+    ],
   },
   {
-    title: 'Technical',
+    title: 'Technical & Systems',
     icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      <svg
+        className="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+        />
       </svg>
     ),
-    color: 'text-slate-700 bg-slate-100',
-    skills: ['REST APIs', 'SQL', 'PostgreSQL', 'Java / Spring Boot', 'React', 'System Integration', 'Authentication / RBAC'],
+    color: 'bg-slate-100 text-slate-700',
+    skills: [
+      'SQL & Data Analysis',
+      'REST APIs',
+      'PostgreSQL',
+      'Java / Spring Boot',
+      'React',
+      'Authentication & RBAC',
+    ],
   },
   {
     title: 'Delivery & Validation',
     icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      <svg
+        className="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
       </svg>
     ),
-    color: 'text-emerald-600 bg-emerald-50',
-    skills: ['Agile', 'UAT', 'Test Scenarios', 'Acceptance Criteria', 'Requirement Validation'],
+    color: 'bg-emerald-50 text-emerald-600',
+    skills: [
+      'Agile Delivery',
+      'UAT Planning & Execution',
+      'Test Scenarios',
+      'Requirement Validation',
+      'Defect Tracking',
+      'Solution Acceptance',
+    ],
   },
 ]
 
 export default function Skills() {
   return (
-    <section className="bg-white border-y border-slate-200">
-      <div className="max-w-6xl mx-auto px-6 py-20">
+    <section className="border-y border-slate-200 bg-white">
+      <div className="mx-auto max-w-6xl px-6 py-20">
         <div className="mb-12">
-          <p className="text-blue-600 text-sm font-semibold tracking-widest uppercase mb-2">Core Competencies</p>
-          <h2 className="text-3xl font-bold text-slate-900">Skills & Expertise</h2>
+          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-blue-600">
+            Core Competencies
+          </p>
+
+          <h2 className="text-3xl font-bold text-slate-900">
+            Skills & Expertise
+          </h2>
+
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-500">
+            A combination of business analysis, systems thinking, technical
+            understanding, and solution validation.
+          </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {categories.map((cat) => (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {categories.map((category) => (
             <div
-              key={cat.title}
-              className="bg-white rounded-xl border border-slate-200 p-6 hover:shadow-md hover:border-slate-300 transition-all group"
+              key={category.title}
+              className="group rounded-xl border border-slate-200 bg-white p-6 transition-all hover:border-slate-300 hover:shadow-md"
             >
-              <div className={`inline-flex p-2 rounded-lg ${cat.color} mb-4`}>
-                {cat.icon}
+              <div
+                className={`mb-4 inline-flex rounded-lg p-2 ${category.color}`}
+              >
+                {category.icon}
               </div>
-              <h3 className="text-sm font-semibold text-slate-900 mb-4">{cat.title}</h3>
-              <ul className="space-y-2">
-                {cat.skills.map((skill) => (
-                  <li key={skill} className="flex items-start gap-2 text-sm text-slate-500">
-                    <span className="mt-1.5 w-1 h-1 bg-slate-300 rounded-full flex-shrink-0" />
-                    {skill}
+
+              <h3 className="mb-4 text-sm font-semibold text-slate-900">
+                {category.title}
+              </h3>
+
+              <ul className="space-y-2.5">
+                {category.skills.map((skill) => (
+                  <li
+                    key={skill}
+                    className="flex items-start gap-2 text-sm leading-relaxed text-slate-500"
+                  >
+                    <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-slate-300" />
+                    <span>{skill}</span>
                   </li>
                 ))}
               </ul>
