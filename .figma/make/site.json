@@ -1,0 +1,10 @@
+{
+  "description": "Effortlessly convert Markdown files into professional portfolios, streamlining the process for freelancers and creatives to showcase their work.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
