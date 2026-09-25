@@ -2,7 +2,7 @@ const resumePdf = '/resume/Resume1.0.pdf'
 
 const experience = [
   {
-    role: 'Co-op Business Systems Analyst',
+    role: 'Business Systems Analyst',
     organization: 'MPBSDP – Identity and Access Management Branch',
     location: 'Toronto, ON',
     date: 'May 2024 – May 2025',
